@@ -1,0 +1,21 @@
+server:
+  port: 8083
+
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: group_stock
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: '*'
+    topic:
+      name: order_topic
+  data:
+    mongodb:
+      uri: mongodb+srv://root:root@cluster0.ws3ud.mongodb.net/orderservicedb?authSource=admin&replicaSet=atlas-k3m8gj-shard-0&readPreference=primary&appname=MongoDB%20Compass%20Community&ssl=true
